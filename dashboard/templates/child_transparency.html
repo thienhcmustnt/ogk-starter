@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OGK — Góc minh bạch dành cho em</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-sky-50 text-slate-800 min-h-screen">
+  <main class="max-w-3xl mx-auto px-4 py-6 space-y-5">
+    <div class="bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sky-500 flex flex-wrap justify-between items-center gap-3">
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold text-sky-700">Chào em! OGK là người bạn đồng hành</h1>
+        <p class="mt-1 text-sm text-slate-600">
+          Mọi thứ đều rõ ràng — em luôn xem được chính xác những gì ba mẹ xem (NT1 & NT5).
+        </p>
+      </div>
+      <a href="/" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg">Trang Phụ huynh</a>
+    </div>
+
+    <!-- NT1 & NT2 Elementary-school transparency card -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+      <h2 class="text-lg font-bold text-emerald-700">Ứng dụng này ghi nhận gì về em?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+        <div class="bg-emerald-50 p-4 rounded-xl">
+          <h3 class="font-semibold text-emerald-800 mb-1">Có ghi nhận (để tính giờ học & chơi):</h3>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Tên ứng dụng em mở (ví dụ: <code>chrome.exe</code>)</li>
+            <li>Tên trang web chính (ví dụ: <code>olm.vn</code>)</li>
+            <li>Em dùng trong bao nhiêu phút</li>
+          </ul>
+        </div>
+        <div class="bg-rose-50 p-4 rounded-xl">
+          <h3 class="font-semibold text-rose-800 mb-1">Tuyệt đối KHÔNG ghi nhận:</h3>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Không đọc tin nhắn, email hay bài tập của em</li>
+            <li>Không chụp ảnh màn hình máy tính</li>
+            <li>Không ghi lại những phím em gõ</li>
+            <li>Không lưu đường link chi tiết bên trong trang web</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Child-view login / live transparent view (Starter for Member B) -->
+    <section id="child-login-box" class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="text-base font-bold text-sky-800 mb-2">Đăng nhập để xem "Hôm nay em đã dùng gì"</h2>
+      <form id="child-login-form" class="flex flex-wrap gap-2 text-sm">
+        <input id="c-email" type="email" value="child@ogk.local" class="flex-1 min-w-[180px] border rounded-lg px-3 py-2" required />
+        <input id="c-password" type="password" value="ChildView2026!" class="flex-1 min-w-[160px] border rounded-lg px-3 py-2" required />
+        <button type="submit" class="bg-sky-600 hover:bg-sky-700 text-white font-semibold px-4 py-2 rounded-lg">Xem báo cáo</button>
+      </form>
+      <p id="c-msg" class="text-xs text-rose-600 mt-2"></p>
+    </section>
+
+    <section id="child-live-section" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+        <div class="flex justify-between items-center">
+          <h2 id="child-greeting" class="text-lg font-bold text-sky-700"></h2>
+          <button onclick="childLogout()" class="text-xs bg-slate-100 px-3 py-1 rounded-lg">Đăng xuất</button>
+        </div>
+        <p id="child-stats" class="text-sm text-slate-700"></p>
+        <div id="child-top-items" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"></div>
+      </div>
+
+      <!-- NT3 Child voice form -->
+      <div class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+        <h2 class="text-base font-bold text-indigo-700">Gửi lời nhắn cho ba mẹ (NT3)</h2>
+        <form id="child-req-form" class="space-y-2 text-sm">
+          <div class="flex flex-wrap gap-2">
+            <select id="req-type" class="border rounded-lg px-3 py-2">
+              <option value="unlock_request">Xin thêm 15 phút</option>
+              <option value="false_positive_report">Báo trang học bị chặn nhầm</option>
+            </select>
+            <input id="req-subject" type="text" value="daily_quota" placeholder="VD: daily_quota hoặc olm.vn" class="flex-1 border rounded-lg px-3 py-2" required />
+          </div>
+          <input id="req-message" type="text" placeholder="Em viết lời nhắn gửi ba mẹ..." class="w-full border rounded-lg px-3 py-2" required />
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold">Gửi cho ba mẹ</button>
+          <p id="req-feedback" class="text-xs text-emerald-700"></p>
+        </form>
+      </div>
+
+      <!-- NT5 Audit log visible to child -->
+      <div class="bg-white rounded-2xl shadow-sm p-6 space-y-2">
+        <h2 class="text-base font-bold text-slate-800">Nhật ký ba mẹ thay đổi quy định (NT5)</h2>
+        <div id="child-audit-list" class="space-y-1.5 text-xs"></div>
+      </div>
+    </section>
+
+    <!-- NT6 Emergency Safety Banner -->
+    <section class="bg-amber-50 border border-amber-300 rounded-2xl p-5 text-sm">
+      <h2 class="font-bold text-amber-900">Luôn mở và không bao giờ bị chặn (An toàn ưu tiên NT6):</h2>
+      <p class="mt-1">
+        Tổng đài quốc gia bảo vệ trẻ em <strong>111</strong> (miễn phí 24/7), trang thông tin giáo dục
+        (<code>olm.vn</code>, <code>vio.edu.vn</code>, <code>moet.gov.vn</code>) và các số cứu hộ khẩn cấp
+        <strong>113, 114, 115</strong> luôn được truy cập mọi lúc.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    let childCsrf = "";
+    let childId = null;
+
+    async function loadChildPortal(me) {
+      childCsrf = me.csrf_token;
+      childId = me.user.linked_child_id || me.children?.[0]?.id;
+      if (!childId) return;
+      document.getElementById("child-login-box").classList.add("hidden");
+      document.getElementById("child-live-section").classList.remove("hidden");
+      document.getElementById("child-greeting").textContent = `Hôm nay ${me.user.full_name} đã dùng gì?`;
+
+      const [sum, audits] = await Promise.all([
+        fetch(`/api/v1/reports/${childId}/summary?days=7`).then((r) => r.json()),
+        fetch(`/api/v1/reports/${childId}/audit-logs?limit=15`).then((r) => r.json()),
+      ]);
+      document.getElementById("child-stats").textContent =
+        `Trong 7 ngày qua em dùng máy khoảng ${Math.round(sum.total_duration_sec / 60)} phút (có ${sum.total_blocked_events} lần gặp trang/ứng dụng đang tạm khóa).`;
+
+      document.getElementById("child-top-items").innerHTML = `
+        <div class="bg-sky-50 p-3 rounded-xl">
+          <p class="font-bold mb-1">Ứng dụng em hay mở:</p>
+          ${sum.top_apps.map((a) => `<p>• ${a.subject} (${Math.round(a.total_duration_sec / 60)} phút)</p>`).join("") || "<p>Chưa có dữ liệu</p>"}
+        </div>
+        <div class="bg-indigo-50 p-3 rounded-xl">
+          <p class="font-bold mb-1">Trang web em hay vào:</p>
+          ${sum.top_domains.map((d) => `<p>• ${d.subject} (${d.count} lần)</p>`).join("") || "<p>Chưa có dữ liệu</p>"}
+        </div>`;
+
+      document.getElementById("child-audit-list").innerHTML = audits
+        .map((a) => `<div class="bg-slate-50 px-3 py-2 rounded-lg flex justify-between gap-2">
+          <span><strong>${a.actor_label}</strong>: ${a.action}</span>
+          <span class="text-slate-400">${new Date(a.created_at).toLocaleString()}</span>
+        </div>`)
+        .join("");
+    }
+
+    document.getElementById("child-login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const res = await fetch("/api/v1/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: document.getElementById("c-email").value,
+          password: document.getElementById("c-password").value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        document.getElementById("c-msg").textContent = data.detail || "Đăng nhập thất bại";
+        return;
+      }
+      loadChildPortal(data);
+    });
+
+    document.getElementById("child-req-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const res = await fetch("/api/v1/requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": childCsrf },
+        body: JSON.stringify({
+          request_type: document.getElementById("req-type").value,
+          subject: document.getElementById("req-subject").value,
+          message: document.getElementById("req-message").value,
+          requested_minutes: 15,
+        }),
+      });
+      const data = await res.json();
+      document.getElementById("req-feedback").textContent = res.ok
+        ? "Đã gửi lời nhắn thành công! Ba mẹ sẽ phản hồi sớm nhé."
+        : `Lỗi: ${data.detail}`;
+    });
+
+    async function childLogout() {
+      await fetch("/api/v1/auth/logout", { method: "POST", headers: { "X-CSRF-Token": childCsrf } });
+      window.location.reload();
+    }
+
+    fetch("/api/v1/auth/me").then((r) => (r.ok ? r.json() : null)).then((me) => {
+      if (me) loadChildPortal(me);
+    });
+  </script>
+</body>
+</html>

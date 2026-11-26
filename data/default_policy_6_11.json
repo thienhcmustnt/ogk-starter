@@ -1,0 +1,126 @@
+{
+  "profile_name": "Default Safe Companion Policy (Age 6-11)",
+  "weekday_quota_minutes": 90,
+  "weekend_quota_minutes": 120,
+  "grace_period_seconds": 60,
+  "warning_thresholds_minutes": [10, 5, 1],
+  "idle_timeout_seconds": 300,
+  "enforce_safesearch": true,
+  "block_doh_endpoints": true,
+  "offline_expiry_days": 7,
+  "offline_expiry_mode": "fail_open_with_education_only",
+  "schedule_matrix": [
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false]
+  ],
+  "blocked_domains": [
+    {
+      "target": "tiktok.com",
+      "reason": "Mạng xã hội video ngắn chưa phù hợp với trẻ 6-11 tuổi và dễ gây mất tập trung học tập.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "target": "facebook.com",
+      "reason": "Mạng xã hội yêu cầu từ 13 tuổi trở lên theo quy định an toàn.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "target": "instagram.com",
+      "reason": "Mạng xã hội yêu cầu từ 13 tuổi trở lên theo quy định an toàn.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "target": "blocked-test-01.example.com",
+      "reason": "Tên miền mô phỏng kiểm thử bộ lọc nội dung không phù hợp lứa tuổi.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    }
+  ],
+  "allowed_domains": [
+    {
+      "target": "khanacademy.org",
+      "reason": "Nền tảng học trực tuyến miễn phí được khuyến khích.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "target": "scratch.mit.edu",
+      "reason": "Môi trường học lập trình kéo thả cho học sinh tiểu học.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    }
+  ],
+  "blocked_apps": [
+    {
+      "target": "steam.exe",
+      "reason": "Cửa hàng trò chơi chưa bật cho độ tuổi 6-11 vào giờ học.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    }
+  ],
+  "allowed_apps": [
+    {
+      "target": "chrome.exe",
+      "reason": "Trình duyệt phục vụ học tập trực tuyến (được lọc qua DNS Proxy).",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    }
+  ],
+  "category_rules": [
+    {
+      "category": "education",
+      "daily_limit_minutes": null,
+      "blocked": false,
+      "reason": "Học tập luôn được mở và không giới hạn thời lượng.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "category": "entertainment",
+      "daily_limit_minutes": 45,
+      "blocked": false,
+      "reason": "Giải trí phù hợp lứa tuổi tối đa 45 phút mỗi ngày để bảo vệ mắt.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "category": "gaming",
+      "daily_limit_minutes": 30,
+      "blocked": false,
+      "reason": "Trò chơi trực tuyến giới hạn 30 phút mỗi ngày.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "category": "social_media",
+      "daily_limit_minutes": 0,
+      "blocked": true,
+      "reason": "Mạng xã hội không phù hợp cho học sinh tiểu học (6-11 tuổi).",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "category": "age_inappropriate",
+      "daily_limit_minutes": 0,
+      "blocked": true,
+      "reason": "Nội dung không phù hợp với lứa tuổi 6-11.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    },
+    {
+      "category": "uncategorized",
+      "daily_limit_minutes": null,
+      "blocked": false,
+      "reason": "Cho phép truy cập với giám sát minh bạch và có thể báo chặn nhầm nếu cần.",
+      "created_by": "Chính sách mặc định OGK (6-11 tuổi)"
+    }
+  ],
+  "whitelist_emergency": [
+    "tongdai111.vn",
+    "111.gov.vn",
+    "moet.gov.vn",
+    "chinhphu.vn",
+    "moh.gov.vn",
+    "bocongan.gov.vn",
+    "edu.vn",
+    "vnedu.vn",
+    "olm.vn",
+    "vio.edu.vn"
+  ],
+  "emergency_hotlines": ["111", "113", "114", "115"]
+}
